@@ -24,5 +24,5 @@ func play_animation(animation):
 	$AnimatedSprite.play(animation)
 
 func _on_State_state_changed(new_state):
-	print(new_state)
+	play_animation(new_state)
 	

@@ -11,11 +11,8 @@ func state_logic(delta):
 			host.direction = Vector2(-1, 0)
 			host.animated_sprite.set_flip_h(true)
 		_:
-			host.direction = Vector2()
+			host.direction = Vector2(0, 0)
 
 func get_transition(delta):
 	if host().get_input_direction() == null:
 		return "idle"
-
-func enter_state(old_state):
-	host().play_animation("run")
