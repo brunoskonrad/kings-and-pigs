@@ -276,11 +276,14 @@ extents = Vector2( 16.6317, 21.4187 )
 position = Vector2( 200, 200 )
 scale = Vector2( 2.2, 2.2 )
 script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 43 )
-animation = "idle"
-frame = 10
+animation = "run"
+frame = 5
 playing = true
 
 [node name="BodyCollision" type="CollisionShape2D" parent="."]
