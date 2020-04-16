@@ -1,0 +1,35 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node",
+"class": "Spawn",
+"language": "GDScript",
+"path": "res://Scripts/State.gd"
+}, {
+"base": "Node",
+"class": "StateMachine",
+"language": "GDScript",
+"path": "res://Scripts/StateMachine.gd"
+} ]
+_global_script_class_icons={
+"Spawn": "",
+"StateMachine": ""
+}
+
+[application]
+
+config/name="Kings Ang Pigs"
+run/main_scene="res://Actors/Player/PlayerKing.tscn"
+config/icon="res://icon.png"
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
