@@ -103,7 +103,6 @@ extents = Vector2( 8.70514, 11.5546 )
 extents = Vector2( 16.6317, 21.4187 )
 
 [node name="PlayerKing" type="KinematicBody2D"]
-position = Vector2( 200, 200 )
 scale = Vector2( 2.2, 2.2 )
 script = ExtResource( 9 )
 __meta__ = {
@@ -112,8 +111,8 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 20 )
-animation = "run"
-frame = 7
+animation = "idle"
+frame = 2
 playing = true
 
 [node name="BodyCollision" type="CollisionShape2D" parent="."]
