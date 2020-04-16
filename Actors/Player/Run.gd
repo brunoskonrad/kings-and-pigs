@@ -17,12 +17,12 @@ func get_transition(delta):
 		return "idle"
 
 func run_to_right():
-	host().direction = Vector2(1, 0)
+	host().direction.x = 1
 	host().animated_sprite.set_flip_h(false)
 
 func run_to_left():
-	host().direction = Vector2(-1, 0)
+	host().direction.x = -1
 	host().animated_sprite.set_flip_h(true)
 
 func halt():
-	host().direction = Vector2(0, 0)
+	host().direction.x = 0
