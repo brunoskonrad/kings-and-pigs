@@ -1,7 +1,7 @@
 extends Node
 class_name Spawn
 
-var host
+var state_machine: StateMachine
 
 export(String) var state_name
 

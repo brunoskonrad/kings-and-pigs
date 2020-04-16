@@ -12,8 +12,9 @@ export(NodePath) var host_path
 onready var host = get_node(host_path) as Node2D
 
 func _ready():
+	print("machine")
 	for child in get_children():
-		child.host = host
+		child.state_machine = self
 		states_map[child.state_name] = child
 	
 	state = states_map[get_child(0).state_name]

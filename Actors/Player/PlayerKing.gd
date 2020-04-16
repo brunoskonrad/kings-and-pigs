@@ -1,9 +1,11 @@
 extends KinematicBody2D
+class_name PlayerKing
 
-var animated_sprite
+var animated_sprite: AnimatedSprite
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print("Player")
 	animated_sprite = $AnimatedSprite
 
 func _process(delta):
