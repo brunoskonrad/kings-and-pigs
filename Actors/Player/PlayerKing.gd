@@ -20,9 +20,3 @@ func get_input_direction():
 		return "right"
 	return null
 
-func play_animation(animation):
-	$AnimatedSprite.play(animation)
-
-func _on_State_state_changed(new_state):
-	play_animation(new_state)
-	

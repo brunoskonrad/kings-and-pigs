@@ -1,18 +1,28 @@
 extends "res://Actors/Player/KingState.gd"
 
 func state_logic(delta):
-	var host = host()
-
-	match host.get_input_direction():
+	match host().get_input_direction():
 		"right":
-			host.direction = Vector2(1, 0)
-			host.animated_sprite.set_flip_h(false)
+			run_to_right()
 		"left":
-			host.direction = Vector2(-1, 0)
-			host.animated_sprite.set_flip_h(true)
+			run_to_left()
 		_:
-			host.direction = Vector2(0, 0)
+			halt()
+
+func enter_state(previous_state):
+	host().animated_sprite.play("run")
 
 func get_transition(delta):
 	if host().get_input_direction() == null:
 		return "idle"
+
+func run_to_right():
+	host().direction = Vector2(1, 0)
+	host().animated_sprite.set_flip_h(false)
+
+func run_to_left():
+	host().direction = Vector2(-1, 0)
+	host().animated_sprite.set_flip_h(true)
+
+func halt():
+	host().direction = Vector2(0, 0)

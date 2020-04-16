@@ -282,8 +282,8 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 66 )
-animation = "run"
-frame = 7
+animation = "idle"
+frame = 4
 playing = true
 
 [node name="BodyCollision" type="CollisionShape2D" parent="."]
@@ -306,4 +306,3 @@ state_name = "idle"
 [node name="Run" type="Node" parent="State"]
 script = ExtResource( 12 )
 state_name = "run"
-[connection signal="state_changed" from="State" to="." method="_on_State_state_changed"]
