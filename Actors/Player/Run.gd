@@ -18,11 +18,11 @@ func get_transition(delta):
 
 func run_to_right():
 	host().velocity.x = running_speed()
-	host().animated_sprite.set_flip_h(false)
+	host().face_right()
 
 func run_to_left():
 	host().velocity.x = -running_speed()
-	host().animated_sprite.set_flip_h(true)
+	host().face_left()
 
 func halt():
 	host().velocity.x = 0

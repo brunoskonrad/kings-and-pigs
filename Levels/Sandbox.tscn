@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Actors/Player/PlayerKing.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Actors/Enemies/Pig.tscn" type="PackedScene" id=3]
 
 [node name="Node2D" type="Node2D"]
 
@@ -18,3 +19,14 @@ position = Vector2( 233.219, 135.834 )
 [node name="Camera2D" type="Camera2D" parent="PlayerKing"]
 scale = Vector2( 0.454545, 0.454545 )
 current = true
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Pig" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 595.347, 160.027 )
+
+[node name="Pig2" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( -11.1907, 482.321 )
+
+[node name="Pig3" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 595.347, 478.963 )

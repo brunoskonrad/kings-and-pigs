@@ -53,6 +53,16 @@ func is_falling():
 
 func should_jump():
 	return Input.is_action_pressed("jump") and !is_jumping() and is_on_floor()
+	
+func face_right():
+	$BodyCollision.position = Vector2(-7.932, 2)
+	$AnimatedSprite.scale.x = 1
+	$AnimatedSprite.position.x = 0
+	
+func face_left():
+	$BodyCollision.position = Vector2(7.932, 2)
+	$AnimatedSprite.scale.x = -1
+	$AnimatedSprite.position.x = -15
 
 func _on_State_state_changed(new_state):
 	print("*** State changed: ", new_state)
