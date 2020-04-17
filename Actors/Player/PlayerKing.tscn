@@ -129,14 +129,14 @@ script = ExtResource( 9 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 21 )
 animation = "idle"
-frame = 8
+frame = 1
 playing = true
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="BodyCollision" type="CollisionShape2D" parent="."]
-position = Vector2( -7.8996, 2.91994 )
+position = Vector2( -7.8996, 2.0811 )
 shape = SubResource( 22 )
 __meta__ = {
 "_edit_lock_": true
