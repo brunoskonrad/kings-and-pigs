@@ -28,6 +28,9 @@ func physics_process(delta):
 			set_state(transition)
 
 func set_state(new_state):
+	if new_state == previous_state:
+		return
+
 	previous_state = state
 	state = new_state
 	
@@ -43,3 +46,4 @@ func _get_state(key):
 	if key:
 		return states_map[key]
 	return null
+

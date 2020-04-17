@@ -7,18 +7,19 @@ onready var velocity: Vector2 = Vector2(0, 0)
 const FLOOR = Vector2(0, -1)
 
 var gravity = 1500
-var is_jumping = false
+#var is_jumping = false
+
+var previous_position = Vector2()
 
 onready var animated_sprite: AnimatedSprite = $AnimatedSprite
 
 func _physics_process(delta):
 	$State.physics_process(delta)
 	
-	if is_on_floor() and !is_on_air():
+	previous_position = position
+	
+	if is_on_floor() and !is_jumping():
 		velocity.y = 0
-		if is_jumping:
-			is_jumping = false
-			$State.set_state($State/Idle)
 		
 	if should_jump():
 		jump()
@@ -26,6 +27,9 @@ func _physics_process(delta):
 	velocity.y += gravity * delta
 
 	move_and_slide(velocity, FLOOR)
+	
+	if is_falling():
+		$State.set_state($State/Fall)
 
 func get_running_direction():
 	var left = Input.is_action_pressed("ui_left")
@@ -40,12 +44,30 @@ func get_running_direction():
 	return null
 
 func jump():
-	velocity.y = -550
-	animated_sprite.play("jump")
-	is_jumping = true
+	$State.set_state($State/Jump)
 
-func is_on_air():
-	return $State.state.state_name == 'jump'
+func is_jumping():
+	return !is_on_floor() and velocity.y < 0
+	
+func is_falling():
+	return !is_on_floor() and previous_position.y < position.y
 
 func should_jump():
-	return Input.is_action_pressed("jump") and !is_on_air() and is_on_floor()
+	return Input.is_action_pressed("jump") and !is_jumping() and is_on_floor()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func _on_State_state_changed(new_state):
+	print("*** State changed: ", new_state)
