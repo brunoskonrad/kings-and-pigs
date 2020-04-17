@@ -1,7 +1,7 @@
 extends "res://Actors/Player/KingState.gd"
 
 func state_logic(delta):
-	match host().get_input_direction():
+	match host().get_running_direction():
 		"right":
 			run_to_right()
 		"left":
@@ -13,12 +13,8 @@ func enter_state(previous_state):
 	host().animated_sprite.play("run")
 
 func get_transition(delta):
-	match host().get_input_direction():
-		"jump":
-			if host().can_jump():
-				return "jump"
-		null:
-			return "idle"
+	if !host().get_running_direction():
+		return "idle"
 
 func run_to_right():
 	host().velocity.x = 300

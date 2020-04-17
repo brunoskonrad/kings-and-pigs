@@ -1,12 +1,9 @@
 extends "res://Actors/Player/KingState.gd"
 
 func get_transition(delta):
-	match host().get_input_direction():
+	match host().get_running_direction():
 		"right", "left":
 			return "run"
-		"jump":
-			if host().can_jump():
-				return "jump"
 		_:
 			return null
 
