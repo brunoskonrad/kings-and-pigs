@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Assets/03-Pig/Idle (34x28).png" type="Texture" id=1]
 [ext_resource path="res://Actors/Enemies/Pig.gd" type="Script" id=2]
+[ext_resource path="res://Assets/03-Pig/Hit (34x28).png" type="Texture" id=3]
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 1 )
@@ -47,11 +48,24 @@ region = Rect2( 306, 0, 34, 28 )
 atlas = ExtResource( 1 )
 region = Rect2( 340, 0, 34, 28 )
 
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 34, 28 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 3 )
+region = Rect2( 34, 0, 34, 28 )
+
 [sub_resource type="SpriteFrames" id=25]
 animations = [ {
 "frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ) ],
 "loop": true,
 "name": "idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 26 ), SubResource( 27 ) ],
+"loop": true,
+"name": "hit",
 "speed": 5.0
 } ]
 
@@ -67,6 +81,7 @@ script = ExtResource( 2 )
 position = Vector2( 2.16744e-07, 0 )
 frames = SubResource( 25 )
 animation = "idle"
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
