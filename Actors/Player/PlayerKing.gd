@@ -62,12 +62,10 @@ func should_attack():
 func face_right():
 	$AnimatedSprite.scale.x = 1
 	$AnimatedSprite.position.x = 0
-	$StandingHammer.position.x = 0
 	
 func face_left():
 	$AnimatedSprite.scale.x = -1
 	$AnimatedSprite.position.x = -15
-	$StandingHammer.position.x = 34
 
 func _on_State_state_changed(new_state):
 	print("*** State changed: ", new_state)

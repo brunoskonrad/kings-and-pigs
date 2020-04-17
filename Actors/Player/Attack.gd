@@ -10,6 +10,7 @@ func enter_state(previous_state):
 	attack_finished = false
 	var host = host()
 	
+	host.get_node("AttackArea").get_node("Collision").disabled = false
 	host.animated_sprite.play("attack")
 	
 	if host.is_on_floor():
@@ -17,6 +18,7 @@ func enter_state(previous_state):
 	
 func exit_state(next_state):
 	attack_finished = false
+	host().get_node("AttackArea").get_node("Collision").disabled = true
 
 func _on_AnimatedSprite_animation_finished():
 	attack_finished = true
