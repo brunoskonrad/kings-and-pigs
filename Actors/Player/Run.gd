@@ -13,16 +13,20 @@ func enter_state(previous_state):
 	host().animated_sprite.play("run")
 
 func get_transition(delta):
-	if host().get_input_direction() == null:
-		return "idle"
+	match host().get_input_direction():
+		"jump":
+			if host().can_jump():
+				return "jump"
+		null:
+			return "idle"
 
 func run_to_right():
-	host().direction.x = 1
+	host().velocity.x = 300
 	host().animated_sprite.set_flip_h(false)
 
 func run_to_left():
-	host().direction.x = -1
+	host().velocity.x = -300
 	host().animated_sprite.set_flip_h(true)
 
 func halt():
-	host().direction.x = 0
+	host().velocity.x = 0

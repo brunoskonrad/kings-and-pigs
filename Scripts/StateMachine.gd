@@ -18,7 +18,7 @@ func _ready():
 	
 	state = states_map[get_child(0).state_name]
 
-func _physics_process(delta):
+func physics_process(delta):
 	if state != null:
 		state.state_logic(delta)
 		var state_transition = state.get_transition(delta)
@@ -38,7 +38,7 @@ func set_state(new_state):
 		new_state.enter_state(previous_state)
 		
 	emit_signal("state_changed", new_state.state_name)
-		
+
 func _get_state(key):
 	if key:
 		return states_map[key]
