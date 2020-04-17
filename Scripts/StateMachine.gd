@@ -47,3 +47,7 @@ func _get_state(key):
 		return states_map[key]
 	return null
 
+func is_current_state(expected_state):
+	if state != null:
+		state.state_name == expected_state
+	return false

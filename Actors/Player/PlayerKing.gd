@@ -27,7 +27,9 @@ func _physics_process(delta):
 
 	move_and_slide(velocity, FLOOR)
 	
-	if is_falling():
+	if Input.is_action_pressed("attack"):
+		$State.set_state($State/Attack)
+	elif is_falling():
 		$State.set_state($State/Fall)
 
 func get_running_direction():
@@ -53,6 +55,9 @@ func is_falling():
 
 func should_jump():
 	return Input.is_action_pressed("jump") and !is_jumping() and is_on_floor()
+	
+func should_attack():
+	return Input.is_action_pressed("attack") and !$State.is_current_state("attack")
 	
 func face_right():
 	$BodyCollision.position = Vector2(-7.932, 2)
