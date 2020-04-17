@@ -7,7 +7,6 @@ onready var velocity: Vector2 = Vector2(0, 0)
 const FLOOR = Vector2(0, -1)
 
 var gravity = 1500
-#var is_jumping = false
 
 var previous_position = Vector2()
 
@@ -54,20 +53,6 @@ func is_falling():
 
 func should_jump():
 	return Input.is_action_pressed("jump") and !is_jumping() and is_on_floor()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 func _on_State_state_changed(new_state):
 	print("*** State changed: ", new_state)
