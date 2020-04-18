@@ -142,7 +142,7 @@ animations = [ {
 extents = Vector2( 10.1579, 13.0345 )
 
 [sub_resource type="RectangleShape2D" id=27]
-extents = Vector2( 18.1967, 27.2009 )
+extents = Vector2( 18.1967, 13.1401 )
 
 [node name="PlayerKing" type="KinematicBody2D"]
 position = Vector2( 1.37911, 1.57613 )
@@ -153,6 +153,8 @@ script = ExtResource( 9 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 25 )
 animation = "idle"
+frame = 1
+playing = true
 script = ExtResource( 8 )
 
 [node name="BodyCollision" type="CollisionShape2D" parent="."]
