@@ -3,8 +3,6 @@ extends Node2D
 signal start_hammer_attack
 signal hammer_attack_animation_finished
 
-onready var player: PlayerKing = get_parent()
-
 func _input(event):
 	if event.is_action_pressed("attack"):
 		attack()
