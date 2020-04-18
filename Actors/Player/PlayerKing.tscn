@@ -142,7 +142,7 @@ animations = [ {
 extents = Vector2( 10.1579, 13.0345 )
 
 [sub_resource type="RectangleShape2D" id=27]
-extents = Vector2( 18.1967, 13.1401 )
+extents = Vector2( 18.1967, 22.3581 )
 
 [node name="PlayerKing" type="KinematicBody2D"]
 position = Vector2( 1.37911, 1.57613 )
@@ -153,7 +153,7 @@ script = ExtResource( 9 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 25 )
 animation = "idle"
-frame = 1
+frame = 7
 playing = true
 script = ExtResource( 8 )
 
@@ -185,6 +185,7 @@ state_name = "fall"
 position = Vector2( -0.626868, -0.716423 )
 scale = Vector2( 0.455, 0.455 )
 script = ExtResource( 13 )
+DEBUG = true
 
 [node name="AttackArea" type="Area2D" parent="Hammer"]
 position = Vector2( 1.37911, 1.57613 )

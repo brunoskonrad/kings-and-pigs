@@ -4,20 +4,21 @@ signal start_hammer_attack
 signal hammer_attack_animation_finished
 
 onready var scale_x = scale.x
+onready var position_x = position.x
 
 export(bool) var DEBUG = false
 
-func _input(event):
-	if event.is_action_pressed("attack"):
+func _process(delta):
+	if Input.is_action_pressed("attack"):
 		attack()
 
 func attack():
 	if is_attacking():
 		_log("already attacking")
 		return
-	
+
 	_log("attack")
-	
+
 	$Cooldown.start()
 	emit_signal("start_hammer_attack")
 	$AttackArea/Collision.disabled = false
@@ -33,14 +34,16 @@ func is_attacking():
 func aim_to(direction):
 	match(direction):
 		"right":
-			scale.x = scale.x
+			scale.x = scale_x
+			position.x = position_x
 		"left":
-			scale.x = -scale.x
+			scale.x = -scale_x
+			position.x = position_x - 15
 
 func _on_AttackArea_body_entered(body):
 	if body is Pig:
-		print("Piggie!")
-		
+		body.take_damage()
+
 func _log(message):
 	if DEBUG:
 		print("[HammerAttack] ", message)

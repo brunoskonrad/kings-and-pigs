@@ -12,3 +12,14 @@ func _physics_process(delta):
 		velocity.y += GRAVITY
 	
 	move_and_slide(velocity, FLOOR)
+
+func is_invulnerable():
+	return not $DamageCooldown.is_stopped()
+
+func take_damage():
+	if not is_invulnerable():
+		$AnimatedSprite.play("hit")
+		$DamageCooldown.start()
+
+func _on_DamageCooldown_timeout():
+	$AnimatedSprite.play("idle")
