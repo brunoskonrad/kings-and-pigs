@@ -22,3 +22,5 @@ func _on_Hammer_hammer_attack_animation_finished():
 func _on_State_state_changed(next_state):
 	play_animation(next_state)
 
+func _on_Hammer_start_hammer_attack():
+	play_animation("attack")

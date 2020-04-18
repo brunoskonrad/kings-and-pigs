@@ -180,7 +180,7 @@ state_name = "fall"
 
 [node name="Hammer" type="Node2D" parent="."]
 position = Vector2( -0.626868, -0.716423 )
-scale = Vector2( 0.454545, 0.454545 )
+scale = Vector2( 0.455, 0.455 )
 script = ExtResource( 13 )
 
 [node name="AttackArea" type="Area2D" parent="Hammer"]
@@ -199,4 +199,5 @@ one_shot = true
 [connection signal="state_changed" from="State" to="." method="_on_State_state_changed"]
 [connection signal="state_changed" from="State" to="AnimatedSprite" method="_on_State_state_changed"]
 [connection signal="hammer_attack_animation_finished" from="Hammer" to="AnimatedSprite" method="_on_Hammer_hammer_attack_animation_finished"]
+[connection signal="start_hammer_attack" from="Hammer" to="AnimatedSprite" method="_on_Hammer_start_hammer_attack"]
 [connection signal="timeout" from="Hammer/Cooldown" to="Hammer" method="_on_Cooldown_timeout"]

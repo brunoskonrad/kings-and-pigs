@@ -1,5 +1,6 @@
 extends Node2D
 
+signal start_hammer_attack
 signal hammer_attack_animation_finished
 
 onready var player: PlayerKing = get_parent()
@@ -13,7 +14,7 @@ func attack():
 		return
 	
 	$Cooldown.start()
-	player.animated_sprite.play_animation("attack")
+	emit_signal("start_hammer_attack")
 	$AttackArea/Collision.disabled = false
 
 func _on_Cooldown_timeout():

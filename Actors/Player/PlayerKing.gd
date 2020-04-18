@@ -10,8 +10,6 @@ var gravity = 1500
 
 var previous_position = Vector2()
 
-onready var animated_sprite: AnimatedSprite = $AnimatedSprite
-
 func _physics_process(delta):
 	$State.physics_process(delta)
 	
