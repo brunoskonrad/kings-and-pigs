@@ -24,9 +24,7 @@ func _physics_process(delta):
 	velocity.y += gravity * delta
 
 	move_and_slide(velocity, FLOOR)
-	
-	#if should_attack():
-	#	$State.set_state($State/Attack)
+
 	if is_falling():
 		$State.set_state($State/Fall)
 
@@ -63,10 +61,12 @@ func should_attack():
 func face_right():
 	$AnimatedSprite.scale.x = 1
 	$AnimatedSprite.position.x = 0
+	$Hammer.aim_to("right")
 	
 func face_left():
 	$AnimatedSprite.scale.x = -1
 	$AnimatedSprite.position.x = -15
+	$Hammer.aim_to("left")
 
 func _on_State_state_changed(new_state):
 	print("*** State changed: ", new_state)

@@ -147,6 +147,7 @@ extents = Vector2( 18.1967, 27.2009 )
 [node name="PlayerKing" type="KinematicBody2D"]
 position = Vector2( 1.37911, 1.57613 )
 scale = Vector2( 2.2, 2.2 )
+collision_layer = 4
 script = ExtResource( 9 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -186,7 +187,6 @@ script = ExtResource( 13 )
 [node name="AttackArea" type="Area2D" parent="Hammer"]
 position = Vector2( 1.37911, 1.57613 )
 scale = Vector2( 2.2, 2.2 )
-collision_layer = 8
 
 [node name="Collision" type="CollisionShape2D" parent="Hammer/AttackArea"]
 position = Vector2( 20.9711, 2.09712 )
