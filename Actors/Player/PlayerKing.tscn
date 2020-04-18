@@ -178,25 +178,25 @@ state_name = "jump"
 script = ExtResource( 5 )
 state_name = "fall"
 
-[node name="HammerAttack" type="Node2D" parent="."]
+[node name="Hammer" type="Node2D" parent="."]
 position = Vector2( -0.626868, -0.716423 )
 scale = Vector2( 0.454545, 0.454545 )
 script = ExtResource( 13 )
 
-[node name="AttackArea" type="Area2D" parent="HammerAttack"]
+[node name="AttackArea" type="Area2D" parent="Hammer"]
 position = Vector2( 1.37911, 1.57613 )
 scale = Vector2( 2.2, 2.2 )
 collision_layer = 8
 
-[node name="Collision" type="CollisionShape2D" parent="HammerAttack/AttackArea"]
+[node name="Collision" type="CollisionShape2D" parent="Hammer/AttackArea"]
 position = Vector2( 20.9711, 2.09712 )
 shape = SubResource( 27 )
 disabled = true
 
-[node name="Cooldown" type="Timer" parent="HammerAttack"]
+[node name="Cooldown" type="Timer" parent="Hammer"]
 wait_time = 0.6
 one_shot = true
 [connection signal="state_changed" from="State" to="." method="_on_State_state_changed"]
 [connection signal="state_changed" from="State" to="AnimatedSprite" method="_on_State_state_changed"]
-[connection signal="hammer_attack_animation_finished" from="HammerAttack" to="AnimatedSprite" method="_on_HammerAttack_hammer_attack_animation_finished"]
-[connection signal="timeout" from="HammerAttack/Cooldown" to="HammerAttack" method="_on_Cooldown_timeout"]
+[connection signal="hammer_attack_animation_finished" from="Hammer" to="AnimatedSprite" method="_on_Hammer_hammer_attack_animation_finished"]
+[connection signal="timeout" from="Hammer/Cooldown" to="Hammer" method="_on_Cooldown_timeout"]

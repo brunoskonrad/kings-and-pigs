@@ -14,10 +14,11 @@ func play_animation(animation_name):
 		else:
 			play(animation_name)
 
-func _on_HammerAttack_hammer_attack_animation_finished():
+func _on_Hammer_hammer_attack_animation_finished():
 	if next_animation:
 		play(next_animation)
 		next_animation = null
 
 func _on_State_state_changed(next_state):
 	play_animation(next_state)
+

@@ -54,7 +54,7 @@ func is_falling():
 	return !is_on_floor() and previous_position.y < position.y
 	
 func is_attacking():
-	return $HammerAttack.is_attacking()
+	return $Hammer.is_attacking()
 
 func should_jump():
 	return Input.is_action_pressed("jump") and !is_jumping() and is_on_floor()
