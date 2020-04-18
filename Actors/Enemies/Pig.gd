@@ -1,4 +1,5 @@
 extends KinematicBody2D
+class_name Pig
 
 var velocity = Vector2()
 const GRAVITY = 10

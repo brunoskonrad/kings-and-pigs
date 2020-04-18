@@ -139,7 +139,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=26]
-extents = Vector2( 9.838, 13.0345 )
+extents = Vector2( 10.1579, 13.0345 )
 
 [sub_resource type="RectangleShape2D" id=27]
 extents = Vector2( 18.1967, 27.2009 )
@@ -187,6 +187,8 @@ script = ExtResource( 13 )
 [node name="AttackArea" type="Area2D" parent="Hammer"]
 position = Vector2( 1.37911, 1.57613 )
 scale = Vector2( 2.2, 2.2 )
+collision_layer = 8
+collision_mask = 2
 
 [node name="Collision" type="CollisionShape2D" parent="Hammer/AttackArea"]
 position = Vector2( 20.9711, 2.09712 )
@@ -200,4 +202,5 @@ one_shot = true
 [connection signal="state_changed" from="State" to="AnimatedSprite" method="_on_State_state_changed"]
 [connection signal="hammer_attack_animation_finished" from="Hammer" to="AnimatedSprite" method="_on_Hammer_hammer_attack_animation_finished"]
 [connection signal="start_hammer_attack" from="Hammer" to="AnimatedSprite" method="_on_Hammer_start_hammer_attack"]
+[connection signal="body_entered" from="Hammer/AttackArea" to="Hammer" method="_on_AttackArea_body_entered"]
 [connection signal="timeout" from="Hammer/Cooldown" to="Hammer" method="_on_Cooldown_timeout"]

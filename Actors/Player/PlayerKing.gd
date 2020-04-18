@@ -67,7 +67,3 @@ func face_left():
 	$AnimatedSprite.scale.x = -1
 	$AnimatedSprite.position.x = -15
 	$Hammer.aim_to("left")
-
-func _on_State_state_changed(new_state):
-	print("*** State changed: ", new_state)
-

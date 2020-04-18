@@ -9,6 +9,8 @@ var states_map = {}
 
 export(NodePath) var host_path
 
+export(bool) var DEBUG = false
+
 onready var host = get_node(host_path) as Node2D
 
 func _ready():
@@ -41,6 +43,9 @@ func set_state(new_state):
 		new_state.enter_state(previous_state)
 		
 	emit_signal("state_changed", new_state.state_name)
+	
+	if DEBUG:
+		print("*** State changed: ", new_state.state_name)
 
 func _get_state(key):
 	if key:
