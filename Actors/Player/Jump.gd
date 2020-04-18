@@ -10,4 +10,3 @@ func enter_state(previous_state):
 	var host = host()
 	
 	host.velocity.y = -550
-	host.animated_sprite.play("jump")

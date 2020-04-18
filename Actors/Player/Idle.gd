@@ -8,5 +8,4 @@ func get_transition(delta):
 			return null
 
 func enter_state(previous_state):
-	host().animated_sprite.play("idle")
 	host().velocity.x = 0

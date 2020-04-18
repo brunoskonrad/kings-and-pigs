@@ -27,9 +27,9 @@ func _physics_process(delta):
 
 	move_and_slide(velocity, FLOOR)
 	
-	if Input.is_action_pressed("attack"):
-		$State.set_state($State/Attack)
-	elif is_falling():
+	#if should_attack():
+	#	$State.set_state($State/Attack)
+	if is_falling():
 		$State.set_state($State/Fall)
 
 func get_running_direction():
@@ -52,6 +52,9 @@ func is_jumping():
 	
 func is_falling():
 	return !is_on_floor() and previous_position.y < position.y
+	
+func is_attacking():
+	return $HammerAttack.is_attacking()
 
 func should_jump():
 	return Input.is_action_pressed("jump") and !is_jumping() and is_on_floor()
@@ -69,3 +72,4 @@ func face_left():
 
 func _on_State_state_changed(new_state):
 	print("*** State changed: ", new_state)
+

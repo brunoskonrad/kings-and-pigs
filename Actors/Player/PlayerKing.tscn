@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://Assets/01-King Human/Idle (78x58).png" type="Texture" id=1]
 [ext_resource path="res://Assets/01-King Human/Run (78x58).png" type="Texture" id=2]
@@ -7,11 +7,12 @@
 [ext_resource path="res://Actors/Player/Fall.gd" type="Script" id=5]
 [ext_resource path="res://Assets/01-King Human/Fall (78x58).png" type="Texture" id=6]
 [ext_resource path="res://Assets/01-King Human/Attack (78x58).png" type="Texture" id=7]
-[ext_resource path="res://Actors/Player/Attack.gd" type="Script" id=8]
+[ext_resource path="res://Actors/Player/PlayerAnimation.gd" type="Script" id=8]
 [ext_resource path="res://Actors/Player/PlayerKing.gd" type="Script" id=9]
 [ext_resource path="res://Scripts/StateMachine.gd" type="Script" id=10]
 [ext_resource path="res://Actors/Player/Idle.gd" type="Script" id=11]
 [ext_resource path="res://Actors/Player/Run.gd" type="Script" id=12]
+[ext_resource path="res://Actors/Player/HammerAttack.gd" type="Script" id=13]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -93,23 +94,23 @@ region = Rect2( 468, 0, 78, 58 )
 atlas = ExtResource( 2 )
 region = Rect2( 546, 0, 78, 58 )
 
-[sub_resource type="AtlasTexture" id=24]
+[sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 6 )
 region = Rect2( 0, 0, 78, 58 )
 
-[sub_resource type="AtlasTexture" id=26]
+[sub_resource type="AtlasTexture" id=22]
 atlas = ExtResource( 7 )
 region = Rect2( 0, 0, 78, 58 )
 
-[sub_resource type="AtlasTexture" id=27]
+[sub_resource type="AtlasTexture" id=23]
 atlas = ExtResource( 7 )
 region = Rect2( 78, 0, 78, 58 )
 
-[sub_resource type="AtlasTexture" id=28]
+[sub_resource type="AtlasTexture" id=24]
 atlas = ExtResource( 7 )
 region = Rect2( 156, 0, 78, 58 )
 
-[sub_resource type="SpriteFrames" id=21]
+[sub_resource type="SpriteFrames" id=25]
 animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
 "loop": true,
@@ -126,21 +127,21 @@ animations = [ {
 "name": "run",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 24 ) ],
+"frames": [ SubResource( 21 ) ],
 "loop": false,
 "name": "fall",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 26 ), SubResource( 27 ), SubResource( 28 ) ],
+"frames": [ SubResource( 22 ), SubResource( 23 ), SubResource( 24 ) ],
 "loop": false,
 "name": "attack",
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=22]
+[sub_resource type="RectangleShape2D" id=26]
 extents = Vector2( 9.838, 13.0345 )
 
-[sub_resource type="RectangleShape2D" id=29]
+[sub_resource type="RectangleShape2D" id=27]
 extents = Vector2( 18.1967, 27.2009 )
 
 [node name="PlayerKing" type="KinematicBody2D"]
@@ -149,18 +150,13 @@ scale = Vector2( 2.2, 2.2 )
 script = ExtResource( 9 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 21 )
+frames = SubResource( 25 )
 animation = "idle"
-__meta__ = {
-"_edit_lock_": true
-}
+script = ExtResource( 8 )
 
 [node name="BodyCollision" type="CollisionShape2D" parent="."]
 position = Vector2( -7.8996, 2.0811 )
-shape = SubResource( 22 )
-__meta__ = {
-"_edit_lock_": true
-}
+shape = SubResource( 26 )
 
 [node name="State" type="Node" parent="."]
 script = ExtResource( 10 )
@@ -182,16 +178,25 @@ state_name = "jump"
 script = ExtResource( 5 )
 state_name = "fall"
 
-[node name="Attack" type="Node" parent="State"]
-script = ExtResource( 8 )
-state_name = "attack"
+[node name="HammerAttack" type="Node2D" parent="."]
+position = Vector2( -0.626868, -0.716423 )
+scale = Vector2( 0.454545, 0.454545 )
+script = ExtResource( 13 )
 
-[node name="AttackArea" type="Area2D" parent="."]
+[node name="AttackArea" type="Area2D" parent="HammerAttack"]
+position = Vector2( 1.37911, 1.57613 )
+scale = Vector2( 2.2, 2.2 )
 collision_layer = 8
 
-[node name="Collision" type="CollisionShape2D" parent="AttackArea"]
+[node name="Collision" type="CollisionShape2D" parent="HammerAttack/AttackArea"]
 position = Vector2( 20.9711, 2.09712 )
-shape = SubResource( 29 )
+shape = SubResource( 27 )
 disabled = true
-[connection signal="animation_finished" from="AnimatedSprite" to="State/Attack" method="_on_AnimatedSprite_animation_finished"]
+
+[node name="Cooldown" type="Timer" parent="HammerAttack"]
+wait_time = 0.6
+one_shot = true
 [connection signal="state_changed" from="State" to="." method="_on_State_state_changed"]
+[connection signal="state_changed" from="State" to="AnimatedSprite" method="_on_State_state_changed"]
+[connection signal="hammer_attack_animation_finished" from="HammerAttack" to="AnimatedSprite" method="_on_HammerAttack_hammer_attack_animation_finished"]
+[connection signal="timeout" from="HammerAttack/Cooldown" to="HammerAttack" method="_on_Cooldown_timeout"]

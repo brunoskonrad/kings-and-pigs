@@ -9,9 +9,6 @@ func state_logic(delta):
 		_:
 			halt()
 
-func enter_state(previous_state):
-	host().animated_sprite.play("run")
-
 func get_transition(delta):
 	if !host().get_running_direction():
 		return "idle"
