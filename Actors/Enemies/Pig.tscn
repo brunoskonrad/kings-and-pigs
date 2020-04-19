@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Assets/03-Pig/Idle (34x28).png" type="Texture" id=1]
 [ext_resource path="res://Actors/Enemies/Pig.gd" type="Script" id=2]
 [ext_resource path="res://Assets/03-Pig/Hit (34x28).png" type="Texture" id=3]
+[ext_resource path="res://Actors/Attributes/Health.tscn" type="PackedScene" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -66,7 +67,7 @@ animations = [ {
 "frames": [ SubResource( 12 ), SubResource( 13 ) ],
 "loop": false,
 "name": "hit",
-"speed": 5.0
+"speed": 10.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=15]
@@ -82,7 +83,7 @@ script = ExtResource( 2 )
 position = Vector2( 2.16744e-07, 0 )
 frames = SubResource( 14 )
 animation = "idle"
-frame = 8
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -92,4 +93,8 @@ shape = SubResource( 15 )
 [node name="DamageCooldown" type="Timer" parent="."]
 wait_time = 0.8
 one_shot = true
+
+[node name="Health" parent="." instance=ExtResource( 4 )]
+max_health = 2
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="DamageCooldown" to="." method="_on_DamageCooldown_timeout"]

@@ -18,8 +18,18 @@ func is_invulnerable():
 
 func take_damage():
 	if not is_invulnerable():
-		$AnimatedSprite.play("hit")
 		$DamageCooldown.start()
+		$AnimatedSprite.play("hit")
+
+		$Health.take_damage(1)
+		velocity.x = 50
+		
 
 func _on_DamageCooldown_timeout():
+	pass
+
+func _on_AnimatedSprite_animation_finished():
 	$AnimatedSprite.play("idle")
+	velocity.x = 0
+	if $Health.is_dead():
+		queue_free()
