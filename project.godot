@@ -17,7 +17,12 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Pig",
 "language": "GDScript",
-"path": "res://Actors/Enemies/Pig.gd"
+"path": "res://Actors/Enemies/Pig/Pig.gd"
+}, {
+"base": "AnimatedSprite",
+"class": "PigAnimation",
+"language": "GDScript",
+"path": "res://Actors/Enemies/Pig/PigAnimation.gd"
 }, {
 "base": "AnimatedSprite",
 "class": "PlayerAnimation",
@@ -42,6 +47,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Health": "",
 "Pig": "",
+"PigAnimation": "",
 "PlayerAnimation": "",
 "PlayerKing": "",
 "Spawn": "",

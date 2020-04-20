@@ -18,6 +18,7 @@ func _ready():
 		child.state_machine = self
 		states_map[child.state_name] = child
 	
+	_log(get_child(0).state_name)
 	state = states_map[get_child(0).state_name]
 
 func physics_process(delta):
@@ -42,10 +43,9 @@ func set_state(new_state):
 	if new_state != null:
 		new_state.enter_state(previous_state)
 		
-	emit_signal("state_changed", new_state.state_name)
+		emit_signal("state_changed", new_state.state_name)
 	
-	if DEBUG:
-		print("*** State changed: ", new_state.state_name)
+		_log(new_state.state_name)
 
 func _get_state(key):
 	if key:
@@ -56,3 +56,7 @@ func is_current_state(expected_state):
 	if state != null:
 		state.state_name == expected_state
 	return false
+
+func _log(message):
+	if DEBUG:
+		print("[StateMachine]: ", message)

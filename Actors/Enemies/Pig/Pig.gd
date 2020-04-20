@@ -6,6 +6,8 @@ const GRAVITY = 10
 const FLOOR = Vector2(0, -1)
 
 func _physics_process(delta):
+	$State.physics_process(delta)
+
 	if is_on_floor():
 		velocity.y = 0
 	else:
@@ -16,23 +18,27 @@ func _physics_process(delta):
 func is_invulnerable():
 	return not $DamageCooldown.is_stopped()
 
+func idle():
+	$State.set_state($State/Idle)
+
 func take_damage():
 	if not is_invulnerable():
 		$DamageCooldown.start()
-		$AnimatedSprite.play("hit")
-
+		$State.set_state($State/Hit)
 		$Health.take_damage(1)
+
 		velocity.x = 50
 
-func _on_AnimatedSprite_animation_finished():
-	if $AnimatedSprite.animation == "hit":
-		$AnimatedSprite.play("idle")
+func die():
+	$State.set_state($State/Dead)
+
+func _on_AnimatedSprite_hit_animation_finished():
+	if $Health.is_dead():
+		die()
+	else:
+		idle()
 		velocity.x = 0
 
-	print("Animation end: ", $AnimatedSprite.animation)
-
-	if $AnimatedSprite.animation == "dead":
-		queue_free()
-
-	if $Health.is_dead():
-		$AnimatedSprite.play("dead")
+func _on_AnimatedSprite_dead_animation_finished():
+	print("DEAD")
+	queue_free()

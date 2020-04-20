@@ -71,43 +71,43 @@ atlas = ExtResource( 7 )
 region = Rect2( 156, 0, 78, 58 )
 
 [sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 78, 58 )
 
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 2 )
-region = Rect2( 78, 0, 78, 58 )
+region = Rect2( 0, 0, 78, 58 )
 
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 2 )
-region = Rect2( 156, 0, 78, 58 )
+region = Rect2( 78, 0, 78, 58 )
 
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 2 )
-region = Rect2( 234, 0, 78, 58 )
+region = Rect2( 156, 0, 78, 58 )
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 2 )
-region = Rect2( 312, 0, 78, 58 )
+region = Rect2( 234, 0, 78, 58 )
 
 [sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 2 )
-region = Rect2( 390, 0, 78, 58 )
+region = Rect2( 312, 0, 78, 58 )
 
 [sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 2 )
-region = Rect2( 468, 0, 78, 58 )
+region = Rect2( 390, 0, 78, 58 )
 
 [sub_resource type="AtlasTexture" id=22]
 atlas = ExtResource( 2 )
-region = Rect2( 546, 0, 78, 58 )
+region = Rect2( 468, 0, 78, 58 )
 
 [sub_resource type="AtlasTexture" id=23]
-atlas = ExtResource( 6 )
-region = Rect2( 0, 0, 78, 58 )
+atlas = ExtResource( 2 )
+region = Rect2( 546, 0, 78, 58 )
 
 [sub_resource type="AtlasTexture" id=24]
-atlas = ExtResource( 3 )
+atlas = ExtResource( 6 )
 region = Rect2( 0, 0, 78, 58 )
 
 [sub_resource type="SpriteFrames" id=25]
@@ -115,27 +115,27 @@ animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
 "loop": true,
 "name": "idle",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
 "loop": false,
 "name": "attack",
-"speed": 5.0
+"speed": 10.0
 }, {
-"frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
-"loop": true,
-"name": "run",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 23 ) ],
-"loop": false,
-"name": "fall",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 24 ) ],
+"frames": [ SubResource( 15 ) ],
 "loop": false,
 "name": "jump",
-"speed": 5.0
+"speed": 10.0
+}, {
+"frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ) ],
+"loop": true,
+"name": "run",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 24 ) ],
+"loop": true,
+"name": "fall",
+"speed": 10.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=26]
@@ -153,12 +153,12 @@ script = ExtResource( 9 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 25 )
 animation = "idle"
-frame = 5
+frame = 7
 playing = true
 script = ExtResource( 8 )
 
 [node name="BodyCollision" type="CollisionShape2D" parent="."]
-position = Vector2( -7.8996, 2.0811 )
+position = Vector2( -7.8996, 1.62655 )
 shape = SubResource( 26 )
 
 [node name="State" type="Node" parent="."]
@@ -185,7 +185,6 @@ state_name = "fall"
 position = Vector2( -0.626868, -0.716423 )
 scale = Vector2( 0.455, 0.455 )
 script = ExtResource( 13 )
-DEBUG = true
 
 [node name="AttackArea" type="Area2D" parent="Hammer"]
 position = Vector2( 1.37911, 1.57613 )
@@ -199,7 +198,7 @@ shape = SubResource( 27 )
 disabled = true
 
 [node name="Cooldown" type="Timer" parent="Hammer"]
-wait_time = 0.6
+wait_time = 0.4
 one_shot = true
 [connection signal="state_changed" from="State" to="." method="_on_State_state_changed"]
 [connection signal="state_changed" from="State" to="AnimatedSprite" method="_on_State_state_changed"]
