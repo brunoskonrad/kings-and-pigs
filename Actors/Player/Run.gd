@@ -1,13 +1,7 @@
 extends "res://Actors/Player/KingState.gd"
 
 func state_logic(delta):
-	match host().get_running_direction():
-		"right":
-			run_to_right()
-		"left":
-			run_to_left()
-		_:
-			halt()
+	pass
 
 func get_transition(delta):
 	if !host().get_running_direction():

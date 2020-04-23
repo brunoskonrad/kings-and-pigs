@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Assets/01-King Human/Idle (78x58).png" type="Texture" id=1]
 [ext_resource path="res://Assets/01-King Human/Run (78x58).png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Actors/Player/Idle.gd" type="Script" id=11]
 [ext_resource path="res://Actors/Player/Run.gd" type="Script" id=12]
 [ext_resource path="res://Actors/Player/HammerAttack.gd" type="Script" id=13]
+[ext_resource path="res://Actors/Player/ControlMovement.gd" type="Script" id=14]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -153,7 +154,7 @@ script = ExtResource( 9 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 25 )
 animation = "idle"
-frame = 7
+frame = 10
 playing = true
 script = ExtResource( 8 )
 
@@ -164,6 +165,7 @@ shape = SubResource( 26 )
 [node name="State" type="Node" parent="."]
 script = ExtResource( 10 )
 host_path = NodePath("..")
+DEBUG = true
 
 [node name="Idle" type="Node" parent="State"]
 script = ExtResource( 11 )
@@ -200,8 +202,11 @@ disabled = true
 [node name="Cooldown" type="Timer" parent="Hammer"]
 wait_time = 0.4
 one_shot = true
-[connection signal="state_changed" from="State" to="." method="_on_State_state_changed"]
+
+[node name="ControlMovement" type="Node" parent="."]
+script = ExtResource( 14 )
 [connection signal="state_changed" from="State" to="AnimatedSprite" method="_on_State_state_changed"]
+[connection signal="state_changed" from="State" to="." method="_on_State_state_changed"]
 [connection signal="hammer_attack_animation_finished" from="Hammer" to="AnimatedSprite" method="_on_Hammer_hammer_attack_animation_finished"]
 [connection signal="start_hammer_attack" from="Hammer" to="AnimatedSprite" method="_on_Hammer_start_hammer_attack"]
 [connection signal="body_entered" from="Hammer/AttackArea" to="Hammer" method="_on_AttackArea_body_entered"]

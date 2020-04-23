@@ -40,5 +40,4 @@ func _on_AnimatedSprite_hit_animation_finished():
 		velocity.x = 0
 
 func _on_AnimatedSprite_dead_animation_finished():
-	print("DEAD")
 	queue_free()

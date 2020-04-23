@@ -8,8 +8,6 @@ func _on_State_state_changed(state):
 	play(state)
 
 func _on_AnimatedSprite_animation_finished():
-	print("Animation finished: ", animation)
-
 	if animation == "hit":
 		emit_signal("hit_animation_finished")
 		return

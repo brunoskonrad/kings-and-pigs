@@ -1,14 +1,18 @@
 extends KinematicBody2D
 class_name PlayerKing
 
+signal direction_changed
+
 export(int) var speed = 300
+export(int) var jump_strength = 650
 
 onready var velocity: Vector2 = Vector2(0, 0)
 const FLOOR = Vector2(0, -1)
 
 var gravity = 1500
-
 var previous_position = Vector2()
+
+var facing_direction = "right"
 
 func _physics_process(delta):
 	$State.physics_process(delta)
@@ -57,13 +61,21 @@ func should_jump():
 	
 func should_attack():
 	return Input.is_action_pressed("attack") and !$State.is_current_state("attack")
-	
+
 func face_right():
-	$AnimatedSprite.scale.x = 1
-	$AnimatedSprite.position.x = 0
-	$Hammer.aim_to("right")
+	if facing_direction != "right" and not is_attacking():
+		$AnimatedSprite.scale.x = 1
+		$AnimatedSprite.position.x = 0
+		$Hammer.aim_to("right")
+		facing_direction = "right"
+		
+		emit_signal("direction_changed", "right")
 	
 func face_left():
-	$AnimatedSprite.scale.x = -1
-	$AnimatedSprite.position.x = -15
-	$Hammer.aim_to("left")
+	if facing_direction != "left" and not is_attacking():
+		$AnimatedSprite.scale.x = -1
+		$AnimatedSprite.position.x = -15
+		$Hammer.aim_to("left")
+		facing_direction = "left"
+		
+		emit_signal("direction_changed", "left")

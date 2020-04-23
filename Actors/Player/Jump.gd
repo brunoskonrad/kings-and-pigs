@@ -9,4 +9,4 @@ func get_transition(delta):
 func enter_state(previous_state):
 	var host = host()
 	
-	host.velocity.y = -550
+	host.velocity.y = -host.jump_strength

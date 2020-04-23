@@ -110,7 +110,6 @@ script = ExtResource( 1 )
 position = Vector2( 2.16744e-07, 0 )
 frames = SubResource( 18 )
 animation = "idle"
-frame = 1
 playing = true
 script = ExtResource( 10 )
 
@@ -128,7 +127,6 @@ max_health = 2
 [node name="State" type="Node" parent="."]
 script = ExtResource( 4 )
 host_path = NodePath("..")
-DEBUG = true
 
 [node name="Idle" type="Node" parent="State"]
 script = ExtResource( 6 )
