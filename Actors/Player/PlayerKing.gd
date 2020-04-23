@@ -4,7 +4,7 @@ class_name PlayerKing
 signal direction_changed
 
 export(int) var speed = 300
-export(int) var jump_strength = 650
+export(int) var jump_strength = 700
 
 onready var velocity: Vector2 = Vector2(0, 0)
 const FLOOR = Vector2(0, -1)
