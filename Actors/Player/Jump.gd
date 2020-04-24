@@ -7,7 +7,7 @@ func state_logic(delta):
 	current_time += delta
 
 	if _should_increase_jump():
-		host().velocity.y -= 85
+		host().velocity.y -= 350 * current_time
 
 	if Input.is_action_just_released("jump"):
 		print("Release ", current_time)
@@ -22,7 +22,7 @@ func get_transition(delta):
 func enter_state(previous_state):
 	_reset()
 	
-	host().velocity.y = -350
+	host().velocity.y = -400
 	
 func exit_state(x):
 	print("Exit ", current_time)
@@ -34,7 +34,7 @@ func _reset():
 func _should_increase_jump():
 	return (
 		Input.is_action_pressed("jump") and
-		current_time >= 0.05 and
-		current_time <= 0.125 and
+		#current_time >= 0.09 and
+		current_time <= 0.19 and
 		not released
 	)

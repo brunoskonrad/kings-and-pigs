@@ -56,28 +56,28 @@ atlas = ExtResource( 5 )
 region = Rect2( 340, 0, 34, 28 )
 
 [sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 3 )
+atlas = ExtResource( 7 )
 region = Rect2( 0, 0, 34, 28 )
 
 [sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 3 )
+atlas = ExtResource( 7 )
 region = Rect2( 34, 0, 34, 28 )
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 7 )
-region = Rect2( 0, 0, 34, 28 )
+region = Rect2( 68, 0, 34, 28 )
 
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 7 )
-region = Rect2( 34, 0, 34, 28 )
+region = Rect2( 102, 0, 34, 28 )
 
 [sub_resource type="AtlasTexture" id=16]
-atlas = ExtResource( 7 )
-region = Rect2( 68, 0, 34, 28 )
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 34, 28 )
 
 [sub_resource type="AtlasTexture" id=17]
-atlas = ExtResource( 7 )
-region = Rect2( 102, 0, 34, 28 )
+atlas = ExtResource( 3 )
+region = Rect2( 34, 0, 34, 28 )
 
 [sub_resource type="SpriteFrames" id=18]
 animations = [ {
@@ -86,14 +86,14 @@ animations = [ {
 "name": "idle",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 12 ), SubResource( 13 ) ],
-"loop": false,
-"name": "hit",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
+"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
 "loop": false,
 "name": "dead",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 16 ), SubResource( 17 ) ],
+"loop": false,
+"name": "hit",
 "speed": 10.0
 } ]
 
@@ -110,6 +110,7 @@ script = ExtResource( 1 )
 position = Vector2( 2.16744e-07, 0 )
 frames = SubResource( 18 )
 animation = "idle"
+frame = 1
 playing = true
 script = ExtResource( 10 )
 

@@ -154,7 +154,7 @@ script = ExtResource( 9 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 25 )
 animation = "idle"
-frame = 3
+frame = 8
 playing = true
 script = ExtResource( 8 )
 
@@ -165,7 +165,6 @@ shape = SubResource( 26 )
 [node name="State" type="Node" parent="."]
 script = ExtResource( 10 )
 host_path = NodePath("..")
-DEBUG = true
 
 [node name="Idle" type="Node" parent="State"]
 script = ExtResource( 11 )
