@@ -21,13 +21,13 @@ func is_invulnerable():
 func idle():
 	$State.set_state($State/Idle)
 
-func take_damage():
+func take_damage(attack_power):
 	if not is_invulnerable():
 		$DamageCooldown.start()
 		$State.set_state($State/Hit)
 		$Health.take_damage(1)
 
-		velocity.x = 50
+		velocity.x = 50 * attack_power.x
 
 func die():
 	$State.set_state($State/Dead)

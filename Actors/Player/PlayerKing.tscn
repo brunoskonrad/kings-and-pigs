@@ -154,7 +154,7 @@ script = ExtResource( 9 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 25 )
 animation = "idle"
-frame = 10
+frame = 8
 playing = true
 script = ExtResource( 8 )
 
@@ -205,8 +205,8 @@ one_shot = true
 
 [node name="ControlMovement" type="Node" parent="."]
 script = ExtResource( 14 )
-[connection signal="state_changed" from="State" to="AnimatedSprite" method="_on_State_state_changed"]
 [connection signal="state_changed" from="State" to="." method="_on_State_state_changed"]
+[connection signal="state_changed" from="State" to="AnimatedSprite" method="_on_State_state_changed"]
 [connection signal="hammer_attack_animation_finished" from="Hammer" to="AnimatedSprite" method="_on_Hammer_hammer_attack_animation_finished"]
 [connection signal="start_hammer_attack" from="Hammer" to="AnimatedSprite" method="_on_Hammer_start_hammer_attack"]
 [connection signal="body_entered" from="Hammer/AttackArea" to="Hammer" method="_on_AttackArea_body_entered"]
